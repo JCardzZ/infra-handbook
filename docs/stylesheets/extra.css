@@ -1,0 +1,865 @@
+/* Manual de Infra de Manuel: theme overrides for Material for MkDocs. */
+
+/* ---------- Palette ---------- */
+
+:root {
+  --hb-radius: 0.6rem;
+
+  /* Admonition icons (Material Design Icons) */
+  --md-admonition-icon--concepto: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11h3v2h-3zM1 11h3v2H1zM13 1v3h-2V1zM4.92 3.5l2.13 2.14-1.42 1.41L3.5 4.93zm12.03 2.13 2.12-2.13 1.43 1.43-2.13 2.12zM12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1zm-3-3h2v-2.13c1.73-.44 3-2.01 3-3.87a4 4 0 0 0-4-4 4 4 0 0 0-4 4c0 1.86 1.27 3.43 3 3.87z"/></svg>');
+  --md-admonition-icon--tip: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>');
+  --md-admonition-icon--cuidado: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.27 3 3 8.27v7.46L8.27 21h7.46C17.5 19.24 21 15.73 21 15.73V8.27L15.73 3M9.1 5h5.8L19 9.1v5.8L14.9 19H9.1L5 14.9V9.1m6 5.9h2v2h-2zm0-8h2v6h-2z"/></svg>');
+  --md-admonition-icon--rompe-y-arregla: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.78 15.3 6 6 2.11-2.16-6-6zm3.72-5.2c-.39 0-.81-.05-1.14-.19L4.97 21.25l-2.11-2.11 7.41-7.4L8.5 9.96l-.72.7-1.45-1.41v2.86l-.7.7-3.52-3.56.7-.7h2.81l-1.4-1.41 3.56-3.56a2.976 2.976 0 0 1 4.22 0L9.89 5.74l1.41 1.4-.71.71 1.79 1.78 1.82-1.88c-.14-.33-.2-.75-.2-1.12a3.49 3.49 0 0 1 3.5-3.52c.59 0 1.11.14 1.58.42L16.41 6.2l1.5 1.5 2.67-2.67c.28.47.42.97.42 1.6 0 1.92-1.55 3.47-3.5 3.47"/></svg>');
+}
+
+/* Light: deep teal header, teal links. Text on primary passes WCAG AA. */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #0f5f5a;
+  --md-primary-fg-color--light: #14857d;
+  --md-primary-fg-color--dark: #0b4743;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, 0.75);
+  --md-accent-fg-color: #0e7490;
+  --md-accent-fg-color--transparent: rgba(14, 116, 144, 0.1);
+  --md-typeset-a-color: #0f6b65;
+
+  --hb-surface: #f4f7f6;
+  --hb-border: #dbe5e3;
+  --hb-muted: #4b5a58;
+}
+
+/* Dark: slate background with a slightly cooler hue, light teal links. */
+[data-md-color-scheme="slate"] {
+  --md-hue: 200;
+  --md-primary-fg-color: #123f3c;
+  --md-primary-fg-color--light: #1b5a55;
+  --md-primary-fg-color--dark: #0c2d2b;
+  --md-primary-bg-color: #f1f5f4;
+  --md-primary-bg-color--light: rgba(241, 245, 244, 0.7);
+  --md-accent-fg-color: #5eead4;
+  --md-accent-fg-color--transparent: rgba(94, 234, 212, 0.1);
+  --md-typeset-a-color: #6ee7d8;
+
+  --hb-surface: rgba(255, 255, 255, 0.04);
+  --hb-border: rgba(255, 255, 255, 0.12);
+  --hb-muted: #b6c2c0;
+}
+
+/* ---------- Typography ---------- */
+
+.md-typeset {
+  line-height: 1.7;
+}
+
+.md-typeset h1 {
+  font-weight: 700;
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset h2 {
+  font-weight: 650;
+  margin-top: 2.2em;
+  padding-top: 0.6em;
+  border-top: 1px solid var(--hb-border);
+}
+
+.md-typeset abbr {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* ---------- Status badges ---------- */
+
+.hb-badge {
+  display: inline-block;
+  padding: 0.05em 0.6em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+[data-md-color-scheme="default"] .hb-badge--planned { background: #eef1f4; color: #3f4a56; border-color: #d6dce3; }
+[data-md-color-scheme="default"] .hb-badge--progress { background: #fff4e0; color: #8a4b00; border-color: #f6d9a8; }
+[data-md-color-scheme="default"] .hb-badge--done { background: #e3f6ec; color: #13653a; border-color: #b5e4c9; }
+
+[data-md-color-scheme="slate"] .hb-badge--planned { background: rgba(148, 163, 184, 0.14); color: #cbd5e1; border-color: rgba(148, 163, 184, 0.3); }
+[data-md-color-scheme="slate"] .hb-badge--progress { background: rgba(251, 191, 36, 0.14); color: #fcd34d; border-color: rgba(251, 191, 36, 0.3); }
+[data-md-color-scheme="slate"] .hb-badge--done { background: rgba(74, 222, 128, 0.14); color: #86efac; border-color: rgba(74, 222, 128, 0.3); }
+
+/* ---------- Chapter header card ---------- */
+
+.md-typeset .hb-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.4rem;
+  margin: 0 0 1.5em;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--hb-border);
+  border-radius: var(--hb-radius);
+  background: var(--hb-surface);
+  font-size: 0.72rem;
+}
+
+.md-typeset .hb-meta__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  color: var(--hb-muted);
+}
+
+.md-typeset .hb-meta__item strong {
+  color: var(--md-default-fg-color);
+}
+
+/* ---------- Architecture diagrams ---------- */
+
+/* Diagrams scale down to fit the column (never up past their design size) on a
+   white card that stays readable in dark mode. The image or its "Ver en
+   detalle" button opens the study viewer (javascripts/diagram-viewer.js). */
+.md-typeset .hb-diagram {
+  margin: 1.2em 0;
+}
+
+.md-typeset .hb-diagram img {
+  display: block;
+  box-sizing: border-box;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0.6rem;
+  background: #ffffff;
+  border: 1px solid var(--hb-border);
+  border-radius: var(--hb-radius);
+  cursor: zoom-in;
+}
+
+/* Shrinks to the image so the button sits on the diagram's own corner. */
+.md-typeset .hb-diagram__frame {
+  position: relative;
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Icon-only open button ("Ver en detalle" in its label): quiet until the diagram is hovered. */
+.md-typeset .hb-diagram__open {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 1px solid #dbe5e3;
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #4b5a58;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 150ms, color 150ms, border-color 150ms;
+}
+
+.md-typeset .hb-diagram__open svg {
+  width: 1rem;
+  height: 1rem;
+  fill: currentColor;
+}
+
+.md-typeset .hb-diagram__frame:hover .hb-diagram__open,
+.md-typeset .hb-mermaid:hover .hb-diagram__open,
+.md-typeset .hb-diagram__open:hover {
+  border-color: #0f6b65;
+  color: #0f6b65;
+  opacity: 1;
+}
+
+/* Keyboard focus only, and a thin ring instead of the browser's default. */
+.md-typeset .hb-diagram__open:focus {
+  outline: none;
+}
+
+.md-typeset .hb-diagram__open:focus-visible {
+  outline: 2px solid #0f6b65;
+  outline-offset: 2px;
+  opacity: 1;
+}
+
+.md-typeset .hb-diagram figcaption {
+  max-width: none;
+  font-size: 0.68rem;
+  color: var(--hb-muted);
+}
+
+/* ---------- Home dashboard ---------- */
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > ol > li {
+  border-radius: var(--hb-radius);
+  transition: border-color 125ms, box-shadow 125ms;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--md-accent-fg-color);
+}
+
+/* Card headers use the same tiles as the study path: official logos on white,
+   Material icons on a teal tint for sections that are practices. */
+.md-typeset .grid.cards > ul > li > p:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.md-typeset .grid.cards .hb-logo,
+.md-typeset .grid.cards .lg {
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.5rem;
+}
+
+.md-typeset .grid.cards .hb-logo {
+  padding: 0.3rem;
+  border: 1px solid var(--hb-border);
+  background: #ffffff;
+  object-fit: contain;
+}
+
+.md-typeset .grid.cards .hb-logo + .hb-logo {
+  margin-left: -0.2rem;
+}
+
+.md-typeset .grid.cards .lg {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-primary-fg-color--light);
+}
+
+.md-typeset .grid.cards .lg svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid.cards .lg {
+  color: var(--md-accent-fg-color);
+}
+
+.md-typeset .grid.cards a .hb-chip__logo {
+  margin-right: 0.15em;
+  vertical-align: -0.12em;
+}
+
+/* ---------- Custom admonitions ---------- */
+
+/* concepto: teal */
+.md-typeset .admonition.concepto,
+.md-typeset details.concepto { border-color: #0d9488; }
+.md-typeset .concepto > .admonition-title,
+.md-typeset .concepto > summary { background-color: rgba(13, 148, 136, 0.1); }
+.md-typeset .concepto > .admonition-title::before,
+.md-typeset .concepto > summary::before {
+  background-color: #0d9488;
+  -webkit-mask-image: var(--md-admonition-icon--concepto);
+  mask-image: var(--md-admonition-icon--concepto);
+}
+
+/* tip: blue (overrides Material's default tip) */
+.md-typeset .admonition.tip,
+.md-typeset details.tip { border-color: #2563eb; }
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary { background-color: rgba(37, 99, 235, 0.1); }
+.md-typeset .tip > .admonition-title::before,
+.md-typeset .tip > summary::before {
+  background-color: #2563eb;
+  -webkit-mask-image: var(--md-admonition-icon--tip);
+  mask-image: var(--md-admonition-icon--tip);
+}
+
+/* cuidado: amber */
+.md-typeset .admonition.cuidado,
+.md-typeset details.cuidado { border-color: #d97706; }
+.md-typeset .cuidado > .admonition-title,
+.md-typeset .cuidado > summary { background-color: rgba(217, 119, 6, 0.1); }
+.md-typeset .cuidado > .admonition-title::before,
+.md-typeset .cuidado > summary::before {
+  background-color: #d97706;
+  -webkit-mask-image: var(--md-admonition-icon--cuidado);
+  mask-image: var(--md-admonition-icon--cuidado);
+}
+
+/* rompe-y-arregla: violet */
+.md-typeset .admonition.rompe-y-arregla,
+.md-typeset details.rompe-y-arregla { border-color: #7c3aed; }
+.md-typeset .rompe-y-arregla > .admonition-title,
+.md-typeset .rompe-y-arregla > summary { background-color: rgba(124, 58, 237, 0.1); }
+.md-typeset .rompe-y-arregla > .admonition-title::before,
+.md-typeset .rompe-y-arregla > summary::before {
+  background-color: #7c3aed;
+  -webkit-mask-image: var(--md-admonition-icon--rompe-y-arregla);
+  mask-image: var(--md-admonition-icon--rompe-y-arregla);
+}
+
+/* ---------- Self-assessment checklist ---------- */
+
+.md-typeset .task-list-item {
+  margin-bottom: 0.35em;
+}
+
+/* ---------- Diagram guide: layer swatches ---------- */
+
+.hb-swatch {
+  display: inline-block;
+  width: 1.6em;
+  height: 1em;
+  border: 1.5px solid;
+  border-radius: 0.2rem;
+  vertical-align: middle;
+}
+
+.hb-line {
+  display: inline-block;
+  width: 2.2em;
+  border-top: 3px solid;
+  vertical-align: middle;
+}
+
+.hb-line--dashed {
+  border-top-style: dashed;
+  border-top-width: 2px;
+}
+
+/* ---------- Layout ---------- */
+
+/* Wider than Material's 61rem default so diagrams have more room on large screens. */
+.md-grid {
+  max-width: 72rem;
+}
+
+/* ---------- Home: study path ---------- */
+
+/* A vertical rail of numbered steps. The rail fills (--hb-fill, set by
+   javascripts/study-path.js) up to the last step marked as completed. */
+
+.md-typeset .hb-progress {
+  margin: 1em 0 1.4em;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--hb-border);
+  border-radius: var(--hb-radius);
+  background: var(--hb-surface);
+}
+
+.md-typeset .hb-progress__text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.74rem;
+}
+
+.md-typeset .hb-progress__reset {
+  color: var(--hb-muted);
+  font-size: 0.68rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.md-typeset .hb-progress__bar {
+  height: 0.4rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--hb-border);
+}
+
+.md-typeset .hb-progress__bar span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--md-accent-fg-color);
+  transition: width 400ms ease;
+}
+
+.md-typeset .hb-path {
+  display: grid;
+  gap: 1.2rem;
+  margin: 1em 0;
+}
+
+/* Troubleshooting sits beside the path on wide screens, above it on phones. */
+@media screen and (min-width: 60em) {
+  .md-typeset .hb-path {
+    grid-template-columns: minmax(0, 1fr) 14rem;
+    align-items: start;
+  }
+  .md-typeset .hb-path__aside {
+    position: sticky;
+    top: 7rem;
+  }
+}
+
+.md-typeset .hb-path__aside {
+  order: -1;
+  padding: 0.9rem 1.1rem;
+  border: 1px dashed var(--md-accent-fg-color);
+  border-radius: var(--hb-radius);
+  background: var(--md-accent-fg-color--transparent);
+}
+
+@media screen and (min-width: 60em) {
+  .md-typeset .hb-path__aside { order: 0; }
+}
+
+.md-typeset .hb-path__steps {
+  --hb-fill: 0px;
+  position: relative;
+  counter-reset: hb-step;
+}
+
+/* The rail behind the markers, and its filled part. */
+.md-typeset .hb-path__steps::before,
+.md-typeset .hb-path__steps::after {
+  content: "";
+  position: absolute;
+  top: 1.75rem;
+  left: 1.05rem;
+  width: 2px;
+  border-radius: 2px;
+}
+
+.md-typeset .hb-path__steps::before {
+  bottom: 1.75rem;
+  background: var(--hb-border);
+}
+
+.md-typeset .hb-path__steps::after {
+  height: max(0px, calc(var(--hb-fill) - 1.75rem));
+  background: var(--md-accent-fg-color);
+  transition: height 400ms ease;
+}
+
+.md-typeset .hb-step {
+  position: relative;
+  margin: 0 0 0.9rem 3.2rem;
+  padding: 0.85rem 1.1rem 0.9rem;
+  border: 1px solid var(--hb-border);
+  border-radius: var(--hb-radius);
+  background: var(--hb-surface);
+  transition: border-color 150ms, transform 150ms, box-shadow 150ms, opacity 400ms;
+}
+
+.md-typeset .hb-step:hover {
+  border-color: var(--md-accent-fg-color);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Numbered marker on the rail. */
+.md-typeset .hb-step::before {
+  counter-increment: hb-step;
+  content: counter(hb-step);
+  position: absolute;
+  top: 0.7rem;
+  left: -3.2rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 2px solid var(--hb-border);
+  border-radius: 50%;
+  background: var(--md-default-bg-color);
+  color: var(--hb-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: background 200ms, border-color 200ms, color 200ms;
+}
+
+.md-typeset .hb-step.is-done::before {
+  content: "✓";
+  border-color: var(--md-accent-fg-color);
+  background: var(--md-accent-fg-color);
+  color: var(--md-default-bg-color);
+}
+
+/* The first step not yet completed: where to continue. */
+.md-typeset .hb-step.is-next {
+  border-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .hb-step.is-next::before {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+  animation: hb-pulse 2.4s ease-out infinite;
+}
+
+.md-typeset .hb-step.is-next::after {
+  content: "Continúa aquí";
+  position: absolute;
+  top: -0.65rem;
+  left: 0.9rem;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--md-accent-fg-color);
+  color: var(--md-default-bg-color);
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1.3rem;
+  letter-spacing: 0.02em;
+}
+
+@keyframes hb-pulse {
+  0% { box-shadow: 0 0 0 0 var(--md-accent-fg-color--transparent); }
+  30% { box-shadow: 0 0 0 7px var(--md-accent-fg-color--transparent); }
+  100% { box-shadow: 0 0 0 12px transparent; }
+}
+
+.md-typeset .hb-step__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.25rem;
+  font-size: 0.86rem;
+}
+
+.md-typeset .hb-step__title .hb-badge {
+  margin-left: auto;
+}
+
+/* Every step opens with a 2.2rem tile: the official logo on white (so brand
+   colors read in both themes), or a Material icon on a teal tint for stages
+   that are practices rather than products. */
+.md-typeset .hb-step__title .hb-logo,
+.md-typeset .hb-step__title .hb-step__icon {
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 0.5rem;
+}
+
+.md-typeset .hb-step__title .hb-logo {
+  padding: 0.3rem;
+  border: 1px solid var(--hb-border);
+  background: #ffffff;
+  object-fit: contain;
+}
+
+.md-typeset .hb-step__title .hb-logo + .hb-logo {
+  margin-left: -0.2rem;
+}
+
+.md-typeset .hb-step__icon {
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+}
+
+.md-typeset .hb-step__icon svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.md-typeset .hb-step__title strong {
+  font-size: 0.92rem;
+}
+
+.md-typeset .hb-chip__logo {
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+}
+
+/* The AWS wordmark has dark text: give it a light backing in dark mode. */
+[data-md-color-scheme="slate"] .md-typeset .hb-chip__logo[src$="aws.svg"] {
+  padding: 1px 2px;
+  border-radius: 3px;
+  background: #ffffff;
+}
+
+.md-typeset .hb-step__desc {
+  margin: 0 0 0.6rem;
+  color: var(--hb-muted);
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+
+.md-typeset .hb-step__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.md-typeset .hb-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.15rem 0.65rem;
+  border: 1px solid var(--hb-border);
+  border-radius: 999px;
+  background: var(--md-default-bg-color);
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: border-color 150ms, background 150ms;
+}
+
+.md-typeset .hb-chip:hover,
+.md-typeset .hb-chip:focus-visible {
+  border-color: var(--md-accent-fg-color);
+  background: var(--md-accent-fg-color--transparent);
+}
+
+.md-typeset .hb-step__toggle {
+  margin-top: 0.7rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--hb-border);
+  border-radius: 999px;
+  color: var(--hb-muted);
+  font-size: 0.68rem;
+  cursor: pointer;
+  transition: border-color 150ms, color 150ms, background 150ms;
+}
+
+.md-typeset .hb-step__toggle:hover {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-default-fg-color);
+}
+
+.md-typeset .hb-step__toggle[aria-pressed="true"] {
+  border-color: var(--md-accent-fg-color);
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-typeset-a-color);
+}
+
+.md-typeset .hb-step__toggle[aria-pressed="true"]::before {
+  content: "✓ ";
+}
+
+.md-typeset .hb-step.is-done .hb-step__desc {
+  opacity: 0.75;
+}
+
+/* Scroll reveal, only when JS added the class and motion is allowed. */
+.md-typeset .hb-path--animate .hb-step:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .hb-step,
+  .md-typeset .hb-step::before,
+  .md-typeset .hb-progress__bar span,
+  .md-typeset .hb-path__steps::after {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Light mode: the default accent is too pale for the filled marker and rail. */
+[data-md-color-scheme="default"] .md-typeset .hb-path {
+  --md-accent-fg-color: #0f6b65;
+}
+
+/* Mermaid blocks: the same open button, on the diagram's corner. */
+.md-typeset .hb-mermaid {
+  position: relative;
+  cursor: zoom-in;
+}
+
+/* ---------- Diagram study viewer ---------- */
+
+/* Full-screen overlay. The stage is dark with a dot grid in both themes so the
+   white diagram stands out like a sheet on a desk. */
+.hb-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #111a1d;
+  animation: hb-viewer-in 250ms ease-out;
+  color: #e6edf0;
+  font-family: var(--md-text-font-family, sans-serif);
+}
+
+@keyframes hb-viewer-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-viewer { animation: none; }
+}
+
+/* Toolbar floats over the stage so the diagram can use the full screen. */
+.hb-viewer__bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(12, 20, 22, 0.86);
+  backdrop-filter: blur(6px);
+}
+
+.hb-viewer__title {
+  flex: 1 1 16rem;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #b6c2c0;
+}
+
+.hb-viewer__tools {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.hb-viewer__tools button,
+.hb-viewer__tools a {
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: #e6edf0;
+  font: inherit;
+  font-size: 0.75rem;
+  line-height: 2rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hb-viewer__tools button:hover,
+.hb-viewer__tools a:hover,
+.hb-viewer__tools button:focus-visible,
+.hb-viewer__tools a:focus-visible {
+  border-color: #5eead4;
+  color: #5eead4;
+  outline: none;
+}
+
+.hb-viewer__zoom {
+  min-width: 3.2rem;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  color: #b6c2c0;
+}
+
+.hb-viewer__close {
+  margin-left: 0.4rem;
+}
+
+.hb-viewer__stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: #111a1d;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+  cursor: grab;
+  touch-action: none;
+}
+
+.hb-viewer__stage.is-dragging {
+  cursor: grabbing;
+}
+
+.hb-viewer__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: none;
+  border-radius: 0.4rem;
+  background: #ffffff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Mermaid uses Material's theme colors, so its sheet takes the page background. */
+.hb-viewer__img--mermaid {
+  box-sizing: border-box;
+  padding: 0;
+  background: var(--md-default-bg-color);
+}
+
+.hb-viewer__img--mermaid svg {
+  display: block;
+}
+
+/* Floating hint at the bottom; fades out after a few seconds. */
+.hb-viewer__hint {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 50%;
+  z-index: 1;
+  max-width: calc(100% - 2rem);
+  margin: 0;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(12, 20, 22, 0.86);
+  color: #b6c2c0;
+  font-size: 0.66rem;
+  text-align: center;
+  transform: translateX(-50%);
+  pointer-events: none;
+  transition: opacity 600ms;
+}
+
+.hb-viewer__hint.is-faded {
+  opacity: 0;
+}
+
+.hb-viewer__hint kbd {
+  padding: 0 0.3em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.25em;
+  font-size: 0.95em;
+}
+
+/* Phones: compact toolbar on its own row; the hint is about mouse and keyboard. */
+@media screen and (max-width: 44.9375em) {
+  .hb-viewer__hint {
+    display: none;
+  }
+  .hb-viewer__title {
+    flex-basis: 100%;
+    font-size: 0.7rem;
+  }
+  .hb-viewer__tools {
+    width: 100%;
+    gap: 0.25rem;
+  }
+  .hb-viewer__tools button,
+  .hb-viewer__tools a {
+    min-width: 1.9rem;
+    padding: 0 0.45rem;
+  }
+  .hb-viewer__zoom {
+    min-width: 2.6rem;
+  }
+  .hb-viewer__close {
+    margin-left: auto;
+  }
+}

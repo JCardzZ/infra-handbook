@@ -1,0 +1,19 @@
+---
+config:
+  flowchart:
+    curve: step
+---
+flowchart TD
+    accTitle: Árbol de decisión para elegir dónde correr un servicio en Google Cloud
+    accDescr: Si la carga no es un contenedor o necesita control del sistema operativo, usa Compute Engine. Si es un contenedor stateless que responde a HTTP o eventos y no necesita APIs de Kubernetes, usa Cloud Run. Si necesita APIs de Kubernetes, DaemonSets, control de nodos o workloads con estado, usa GKE.
+    start(["Nuevo servicio"]) --> q1{"¿Se empaqueta<br/>como contenedor?"}
+    q1 -- "No / necesito control del SO" --> gce["Compute Engine"]
+    q1 -- "Sí" --> q2{"¿Necesita APIs de Kubernetes,<br/>DaemonSets o control de nodos?"}
+    q2 -- "Sí" --> gke["GKE"]
+    q2 -- "No" --> q3{"¿Es stateless y responde<br/>a HTTP o eventos?"}
+    q3 -- "Sí" --> run["Cloud Run"]
+    q3 -- "No (procesos largos<br/>con estado local)" --> gke
+
+    %% Stroke only: Material sets node fill and text per theme, a fixed fill breaks dark mode.
+    classDef answer stroke:#2e7d32,stroke-width:2.5px
+    class gce,gke,run answer

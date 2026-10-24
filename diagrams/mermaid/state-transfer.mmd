@@ -1,0 +1,17 @@
+stateDiagram-v2
+    accTitle: Ciclo de vida genérico de una transferencia de remesa
+    accDescr: Una transferencia se crea, se valida, retiene fondos, se envía al socio pagador y termina pagada. Puede ser rechazada en validación, cancelada antes del envío, o fallar en el envío y terminar reembolsada.
+    [*] --> Creada
+    Creada --> Validada: datos y compliance OK
+    Creada --> Rechazada: validación falla
+    Validada --> FondosRetenidos: cargo autorizado
+    Validada --> Cancelada: el cliente cancela
+    FondosRetenidos --> Enviada: instrucción al socio pagador
+    FondosRetenidos --> Cancelada: el cliente cancela
+    Enviada --> Pagada: confirmación del socio
+    Enviada --> Fallida: el socio rechaza o expira
+    Fallida --> Reembolsada: se liberan los fondos
+    Pagada --> [*]
+    Rechazada --> [*]
+    Cancelada --> [*]
+    Reembolsada --> [*]

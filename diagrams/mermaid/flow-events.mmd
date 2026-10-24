@@ -1,0 +1,16 @@
+---
+config:
+  flowchart:
+    curve: step
+---
+flowchart TD
+    accTitle: Flujo de eventos con Pub/Sub y dead-letter topic
+    accDescr: La API publica un evento en un topic de Pub/Sub; un worker lo consume y escribe en la base de datos. Si el worker falla repetidamente, Pub/Sub mueve el mensaje a un dead-letter topic para revisión.
+    api["API<br/>(Cloud Run)"] -- "publica evento" --> topic[["Topic<br/>transfer-created"]]
+    topic -- "push subscription" --> worker["Worker<br/>(Cloud Run)"]
+    worker -- "escribe" --> db[("Cloud SQL")]
+    worker -. "falla N veces" .-> dlq[["Dead-letter topic"]]
+    dlq -.-> ops["Revisión manual<br/>o reproceso"]
+
+    classDef fail stroke:#c62828,stroke-width:2px
+    class dlq,ops fail

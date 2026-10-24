@@ -1,0 +1,23 @@
+sequenceDiagram
+    accTitle: Llamada autenticada entre dos servicios de Cloud Run
+    accDescr: El servicio A pide un ID token al metadata server con el audience del servicio B, llama a B con el token en el header Authorization, y el frontend de Cloud Run verifica el token y el permiso run.invoker antes de entregar la request a B y devolver la respuesta.
+    autonumber
+    participant M as Metadata server
+    participant A as Servicio A (Cloud Run)
+    participant CR as Cloud Run (frontend de B)
+    participant B as Servicio B
+
+    A->>M: GET identity?audience=https://b-xyz.a.run.app
+    M-->>A: ID token firmado por Google (SA de A)
+    A->>CR: POST /transfers<br/>Authorization: Bearer ID_TOKEN
+    Note over CR: Verifica firma, audience<br/>y permiso run.invoker
+    %% Two alt blocks instead of alt/else: Material's dark theme renders the
+    %% else label with unreadable contrast.
+    alt Caso 1: token válido y SA con run.invoker
+        CR->>B: Entrega la request
+        B-->>CR: 201 Created
+        CR-->>A: 201 Created
+    end
+    alt Caso 2: token inválido o sin permiso
+        CR-->>A: 401 / 403 (B nunca recibe la request)
+    end
