@@ -1,6 +1,7 @@
 site_name: "Manual de Infra de Manuel"
 site_description: Notas sobre ingeniería de cloud, plataforma e infraestructura, escritas mientras construyo puente.
 site_author: Manuel Cardoza
+site_url: https://jcardzz.github.io/infra-handbook/
 repo_url: https://github.com/JCardzZ/infra-handbook
 repo_name: JCardzZ/infra-handbook
 
