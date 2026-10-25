@@ -348,7 +348,7 @@
 /* ---------- Home: study path ---------- */
 
 /* A vertical rail of numbered steps. The rail fills (--hb-fill, set by
-   javascripts/study-path.js) up to the last step marked as completed. */
+   javascripts/progress-firebase.js) up to the last step marked as completed. */
 
 .md-typeset .hb-progress {
   margin: 1em 0 1.4em;
@@ -372,6 +372,36 @@
   font-size: 0.68rem;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.md-typeset .hb-progress__actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.md-typeset .hb-progress__auth {
+  padding: 0.15rem 0.65rem;
+  border: 1px solid var(--hb-border);
+  border-radius: 999px;
+  color: var(--md-default-fg-color);
+  font-size: 0.68rem;
+  cursor: pointer;
+  transition: border-color 150ms;
+}
+
+.md-typeset .hb-progress__auth:hover {
+  border-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .hb-progress__auth:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.md-typeset .hb-progress__status {
+  margin: 0.5rem 0 0;
+  color: var(--hb-muted);
+  font-size: 0.66rem;
 }
 
 .md-typeset .hb-progress__bar {
@@ -632,17 +662,24 @@
   transition: border-color 150ms, color 150ms, background 150ms;
 }
 
-.md-typeset .hb-step__toggle:hover {
+.md-typeset .hb-step__toggle:hover:not(:disabled) {
   border-color: var(--md-accent-fg-color);
   color: var(--md-default-fg-color);
 }
 
+.md-typeset .hb-step__toggle:disabled {
+  cursor: default;
+}
+
+/* Read-only status label (signed out): same look as the pressed toggle. */
+.md-typeset .hb-step__toggle.is-done,
 .md-typeset .hb-step__toggle[aria-pressed="true"] {
   border-color: var(--md-accent-fg-color);
   background: var(--md-accent-fg-color--transparent);
   color: var(--md-typeset-a-color);
 }
 
+.md-typeset .hb-step__toggle.is-done::before,
 .md-typeset .hb-step__toggle[aria-pressed="true"]::before {
   content: "✓ ";
 }

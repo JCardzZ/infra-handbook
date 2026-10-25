@@ -107,7 +107,7 @@ Este manual registra lo que aprendo en la transición de backend engineering a c
 
 ## Ruta de estudio {#study-path}
 
-El orden sugerido para recorrer el manual. Marca cada etapa al terminarla: tu progreso se guarda en este navegador.
+El orden sugerido para recorrer el manual. Las etapas marcadas como completadas muestran mi avance actual.
 
 <div class="hb-path" markdown>
 

@@ -53,6 +53,43 @@ make serve      # sitio local con live reload
 
 `make` usa el venv `.venv` sin necesidad de activarlo. El script renderiza cada `diagrams/*.py` como SVG en `docs/assets/diagrams/` e incrusta los íconos en el SVG, para que funcione en cualquier máquina. Commitea los SVG generados junto con el `.py`.
 
+## Progreso de la ruta de estudio
+
+La ruta de estudio de la página de inicio muestra qué etapas completé. El progreso se guarda en Firestore, en el proyecto de Firebase `infra-handbook-progress`, con dos documentos:
+
+- `progress/{uid}`: mi documento, que solo yo leo y escribo.
+- `progress/public`: una copia de solo lectura que ve cualquier visitante.
+
+Ambos tienen la forma `{ steps: { <stepId>: { done, updatedAt } } }`.
+
+- **Sin sesión:** la página lee `progress/public` y muestra cada etapa como "Completada" o "Pendiente", sin poder cambiarla.
+- **Con sesión del dueño:** con el botón "Iniciar sesión" (Google) y la cuenta `cardozamanuel96@gmail.com`, "Marcar como completada" escribe en los dos documentos a la vez.
+- **Sin conexión o con errores:** se muestra el último estado conocido, guardado en el navegador, y un aviso. Los cambios hechos sin conexión se envían al reconectar.
+
+El código está en `docs/javascripts/progress-firebase.js` y la configuración en `docs/javascripts/firebase-config.js`.
+
+### Reglas de seguridad
+
+`firestore.rules` define quién puede leer y escribir:
+
+- `progress/public`: lectura para todos; escritura solo si `request.auth.token.email` es `cardozamanuel96@gmail.com` y `email_verified` es `true`.
+- `progress/{uid}`: lectura y escritura solo si `request.auth.uid == uid` y se cumple la misma condición de email.
+- Todo lo demás se rechaza.
+
+Para desplegarlas (requiere [Firebase CLI](https://firebase.google.com/docs/cli): `npm install -g firebase-tools`):
+
+```bash
+firebase login
+firebase use infra-handbook-progress
+firebase deploy --only firestore:rules
+```
+
+`firebase.json` apunta a `firestore.rules` y `.firebaserc` fija el proyecto por defecto.
+
+### Por qué la `apiKey` no es un secreto
+
+La `apiKey` de una app web de Firebase identifica el proyecto, no da acceso a los datos: cualquier visitante la recibe en el JavaScript del sitio. Lo que protege los datos son las reglas de Firestore y la autenticación. Por eso `firebase-config.js` se commitea. Una medida adicional opcional es restringir la key a los dominios del sitio en Google Cloud Console (APIs y servicios → Credenciales).
+
 ## Escribir un capítulo
 
 Copia `docs/templates/chapter-template.md` en la carpeta de la sección correspondiente, mantén todas las secciones en el mismo orden y agrega la página a `nav` en `mkdocs.yml`. Para agregar un término al glosario (tooltip al pasar el cursor), edita `docs/includes/glossary.md`.

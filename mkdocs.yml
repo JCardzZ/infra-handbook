@@ -56,7 +56,9 @@ extra_css:
   - stylesheets/extra.css
 
 extra_javascript:
-  - javascripts/study-path.js
+  # Study path progress, stored in Firestore (see README).
+  - path: javascripts/progress-firebase.js
+    type: module
   # Study viewer for architecture diagrams: zoom, pan, fit, 1:1.
   - javascripts/diagram-viewer.js
 

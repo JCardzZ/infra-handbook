@@ -12,3 +12,8 @@ site/
 .DS_Store
 .idea/
 .vscode/
+
+# Firebase CLI
+.firebase/
+firebase-debug.log
+firestore-debug.log

@@ -1,0 +1,26 @@
+rules_version = '2';
+
+// Study path progress for the handbook home page.
+//   progress/public  read-only mirror for every visitor; only the owner writes it
+//   progress/{uid}   the owner's own document
+// Anything not matched below is denied.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isOwner() {
+      return request.auth != null
+        && request.auth.token.email == "cardozamanuel96@gmail.com"
+        && request.auth.token.email_verified == true;
+    }
+
+    match /progress/public {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+
+    // "public" also matches {uid}; exclude it so only the rule above applies.
+    match /progress/{uid} {
+      allow read, write: if uid != "public" && request.auth != null && request.auth.uid == uid && isOwner();
+    }
+  }
+}
