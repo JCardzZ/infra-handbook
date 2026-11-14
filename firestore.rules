@@ -1,8 +1,12 @@
 rules_version = '2';
 
-// Study path progress for the handbook home page.
-//   progress/public  read-only mirror for every visitor; only the owner writes it
-//   progress/{uid}   the owner's own document
+// Study path progress for both handbooks (same Firebase project).
+// Keep this file identical in JCardzZ/infra-handbook and JCardzZ/ai-handbook:
+// `firebase deploy --only firestore:rules` replaces the project's rules.
+//   progress/{public,uid}      infra-handbook
+//   ai-progress/{public,uid}   ai-handbook
+//   <collection>/public  read-only mirror for every visitor; only the owner writes it
+//   <collection>/{uid}   the owner's own document
 // Anything not matched below is denied.
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -13,14 +17,22 @@ service cloud.firestore {
         && request.auth.token.email_verified == true;
     }
 
-    match /progress/public {
-      allow read: if true;
-      allow write: if isOwner();
+    function isProgressCollection(col) {
+      return col == "progress" || col == "ai-progress";
+    }
+
+    match /{col}/public {
+      allow read: if isProgressCollection(col);
+      allow write: if isProgressCollection(col) && isOwner();
     }
 
     // "public" also matches {uid}; exclude it so only the rule above applies.
-    match /progress/{uid} {
-      allow read, write: if uid != "public" && request.auth != null && request.auth.uid == uid && isOwner();
+    match /{col}/{uid} {
+      allow read, write: if isProgressCollection(col)
+        && uid != "public"
+        && request.auth != null
+        && request.auth.uid == uid
+        && isOwner();
     }
   }
 }
